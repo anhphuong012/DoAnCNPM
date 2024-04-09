@@ -1,0 +1,16 @@
+* {
+
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+
+}
+.mt-20 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+}
+.logo  img {
+    width: 110px;
+    height: 30px;
+}
