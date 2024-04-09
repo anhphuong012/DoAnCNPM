@@ -9,9 +9,9 @@ export default function Headers() {
         <img class="img-logo" src={logo} />
       </div>
       <div>
-        <button type="button" class="btn btn-outline-primary">
+        <a type="button" href="/login" class="btn btn-outline-primary">
           Đăng nhập
-        </button>
+        </a>
       </div>
     </header>
   );
