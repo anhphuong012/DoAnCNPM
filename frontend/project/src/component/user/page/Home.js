@@ -4,6 +4,7 @@ import Header from "./Header";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import "bootstrap-icons/font/bootstrap-icons.css";
+import Footer from "./Footer";
 export default function Home() {
   const [doctors, setDoctors] = useState([
     {
@@ -114,12 +115,12 @@ export default function Home() {
               Phiếu khám kèm theo số thứ tự và thời gian bạn được xác nhận
             </p>
           </div>
-          <div>
+          {/* <div>
             <button className="btn btn-primary btn-radius">
-              Xem thêm
+              Xem tất cả
               <i class="bi bi-arrow-right"></i>
             </button>
-          </div>
+          </div> */}
         </div>
 
         <div className="list-doctor">
@@ -128,6 +129,7 @@ export default function Home() {
           ))}
         </div>
       </section>
+      <Footer></Footer>
     </div>
   );
 }
