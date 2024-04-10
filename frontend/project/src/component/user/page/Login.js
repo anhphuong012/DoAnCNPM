@@ -30,13 +30,13 @@ export default function LoginPage() {
                 </div>
                 <div class="mb-3 text-just">
                   <label for="pwd" class="form-label">
-                    Password:
+                    Mật khẩu:
                   </label>
                   <input
                     type="password"
                     class="form-control"
                     id="pwd"
-                    placeholder="Enter password"
+                    placeholder="Nhập mật khẩu"
                     name="pswd"
                   />
                 </div>
