@@ -17,16 +17,18 @@ public class Shedule {
     private LocalDate date;
     private LocalTime fromTime;
     private LocalTime toTime;
+    private boolean status;
 
     public Shedule() {
     }
 
-    public Shedule( long doctorId, LocalDate date, LocalTime fromTime, LocalTime toTime) {
+    public Shedule( long doctorId, LocalDate date, LocalTime fromTime, LocalTime toTime, boolean status) {
         this.id = id;
         this.doctorId = doctorId;
         this.date = date;
         this.fromTime = fromTime;
         this.toTime = toTime;
+        this.status = status;
     }
 
     public long getId() {
@@ -69,6 +71,14 @@ public class Shedule {
         this.toTime = toTime;
     }
 
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
     @Override
     public String toString() {
         return "Shedule{" +
@@ -77,7 +87,7 @@ public class Shedule {
                 ", date=" + date +
                 ", fromTime=" + fromTime +
                 ", toTime=" + toTime +
+                ", status=" + status +
                 '}';
     }
-
 }
