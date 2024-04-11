@@ -38,9 +38,9 @@
         --tw-text-opacity: 1;
         color: rgb(31 41 55 / var(--tw-text-opacity));
 }
-.infor-doctor{
+/* .infor-doctor{
     padding-top: 3%;
-}
+} */
 .aligan-just {
     text-align: justify;
 }
@@ -103,6 +103,7 @@
 .btn-time {
     margin-right: 2%;
     margin-bottom: 2%;
+    min-width: 135px;
 }
 .wrap_btn-booking-fixed {
     /* position: fixed; */
@@ -118,4 +119,12 @@
 }
 .font-semibold {
     font-weight: 600;
+}
+
+.btn-fixed {
+    position: fixed;
+    bottom: 10px;
+}
+.btn-relative {
+    position: relative;
 }

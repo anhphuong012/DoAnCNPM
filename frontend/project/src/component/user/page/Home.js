@@ -50,6 +50,15 @@ export default function Home() {
     },
   ]);
 
+  const [inputValue, setInputValue] = useState("");
+
+  //Xử lí lấy giá trị trong ô input tìm kiếm
+  const handleChangeInputvalue = (event) => {
+    const searchWord = event.target.value;
+    setInputValue(searchWord);
+  };
+
+  //Component thông tin bác sĩ ở trang Home
   const Card = (props) => {
     return (
       <div>
@@ -92,10 +101,21 @@ export default function Home() {
               placeholder="Triệu chứng, Bác sĩ,Khoa..."
               type="text"
               class="form-control search"
+              value={inputValue}
+              onChange={handleChangeInputvalue}
+              /**Xử lí sự kiện nếu bấm enter */
+              onKeyPress={(event) => {
+                if (event.key === "Enter") {
+                  window.location.href = `/search/${inputValue}`;
+                }
+              }}
             />
-            <button className="btn-search">
+            <a
+              className="btn-search color-black "
+              href={`/search/${inputValue}`}
+            >
               <i class="bi bi-search"></i>
-            </button>
+            </a>
           </div>
         </div>
       </section>

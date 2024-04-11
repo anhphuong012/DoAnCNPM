@@ -18,11 +18,17 @@ export default function Headers() {
   const [isLogin, setIsLogin] = useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
+
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const handleForward = (url) => {
+    setAnchorEl(null);
+    window.location.href = url;
   };
   return (
     <div className="border-b">
@@ -106,17 +112,17 @@ export default function Headers() {
                 transformOrigin={{ horizontal: "right", vertical: "top" }}
                 anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
               >
-                <MenuItem onClick={handleClose}>
+                <MenuItem onClick={() => handleForward("/profile")}>
                   <ListItemIcon>
                     <AccountBoxIcon></AccountBoxIcon>
                   </ListItemIcon>{" "}
                   Thông tin
                 </MenuItem>
-                <MenuItem onClick={handleClose}>
+                <MenuItem onClick={() => handleForward("/schedule")}>
                   <ListItemIcon>
                     <EventNoteIcon></EventNoteIcon>
                   </ListItemIcon>{" "}
-                  Lịch đặt khám
+                  Lịch đã đặt
                 </MenuItem>
                 <Divider />
                 <MenuItem onClick={handleClose}>
