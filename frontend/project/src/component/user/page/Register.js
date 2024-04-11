@@ -5,6 +5,11 @@ import "../css/register.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 
 export default function Register() {
+  const [sex, setSex] = useState("male");
+
+  const radioChange = (event) => {
+    setSex(event.target.value);
+  };
   return (
     <div>
       <Header></Header>
@@ -77,7 +82,9 @@ export default function Register() {
                               class="form-check-input"
                               id="radio1"
                               name="optradio"
-                              value="Nam"
+                              value="male"
+                              onChange={radioChange}
+                              checked={sex === "male"}
                             />
                             <label class="form-check-label" for="radio1">
                               Nam
@@ -89,7 +96,9 @@ export default function Register() {
                               class="form-check-input"
                               id="radio2"
                               name="optradio"
-                              value="Nữ"
+                              value="female"
+                              onChange={radioChange}
+                              checked={sex === "female"}
                             />
                             <label class="form-check-label" for="radio2">
                               Nữ
@@ -101,7 +110,9 @@ export default function Register() {
                               class="form-check-input"
                               id="radio3"
                               name="optradio"
-                              value="Khác"
+                              value="other"
+                              onChange={radioChange}
+                              checked={sex === "other"}
                             />
                             <label class="form-check-label" for="radio3">
                               Khác
@@ -164,7 +175,7 @@ export default function Register() {
                       </div>
                     </div>
                   </form>
-                  <div class="row mb-3">
+                  <div class="row mb-3 mt-3">
                     <div class="col-12">
                       {/* <hr class="mt-5 mb-4 border-secondary-subtle"> */}
                       <div class="col-12">

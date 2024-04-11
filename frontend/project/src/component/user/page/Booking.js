@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Header from "./Header";
 import "../css/booking.css";
 
@@ -47,22 +47,39 @@ function a11yProps(index) {
 }
 
 export default function Booking() {
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = useState(0);
+
+  const [fixed, setFixed] = useState(true);
 
   const minute = ["00", "15", "30", "45"];
   const hourMoning = ["7", "8", "9", "10"];
   const hourAfternoon = ["13", "14", "15", "16"];
 
-  const [time, setTime] = React.useState("");
+  const [selectedButton, setSelectedButton] = useState(null);
 
+  //Xử lí sự kiện chỉ chọn đc 1 button thời gian
+  const handleButtonClick = (buttonValue) => {
+    setSelectedButton(buttonValue);
+  };
+
+  //Xử lí sự kiện khi đổi tab ngày
   const handleChange = (event, newValue) => {
     setValue(newValue);
+    setSelectedButton(null);
   };
 
-  const handleTime = (event, newValue) => {
-    setTime(newValue);
-  };
+  console.log(selectedButton);
+  console.log(typeof selectedButton);
 
+  useEffect(() => {
+    const handlSRoll = () => {
+      setFixed(window.scrollY <= 300);
+    };
+
+    window.addEventListener("scroll", handlSRoll);
+  }, []);
+
+  //Trả về component danh sách thời gian
   const ChooseTime = (props) => {
     console.log(props);
     return (
@@ -73,7 +90,10 @@ export default function Booking() {
               <button
                 type="radio"
                 name="time"
-                class="btn btn-outline-primary btn-time"
+                className={`btn btn-outline-primary btn-time ${
+                  selectedButton === hour + ":" + minute ? "active" : ""
+                }`}
+                onClick={() => handleButtonClick(hour + ":" + minute)}
               >
                 {hour} : {minute} -{" "}
                 {minute == "45"
@@ -176,7 +196,9 @@ export default function Booking() {
                   {...a11yProps(6)}
                 />
               </Tabs>
-
+              {/** Chỗ này là Select button chọn thời gian
+               * Mỗi Tab Panel là đại diện cho một ngày
+               */}
               <TabPanel value={value} index={0}>
                 <div className="choose-time">
                   <div className="session">
@@ -184,7 +206,7 @@ export default function Booking() {
                     <span className="title-time">Buổi sáng</span>
                   </div>
                   <ChooseTime
-                    listHour={hourAfternoon}
+                    listHour={hourMoning}
                     listmMnute={minute}
                   ></ChooseTime>
                   <div className="session border-top">
@@ -197,6 +219,8 @@ export default function Booking() {
                   ></ChooseTime>
                 </div>
               </TabPanel>
+
+              {/**Panel Ngày 2 */}
               <TabPanel value={value} index={1}>
                 <div className="choose-time">
                   <div className="session">
@@ -204,7 +228,7 @@ export default function Booking() {
                     <span className="title-time">Buổi sáng</span>
                   </div>
                   <ChooseTime
-                    listHour={hourAfternoon}
+                    listHour={hourMoning}
                     listmMnute={minute}
                   ></ChooseTime>
                   <div className="session border-top">
@@ -217,6 +241,8 @@ export default function Booking() {
                   ></ChooseTime>
                 </div>
               </TabPanel>
+
+              {/* Panel ngày 3*/}
               <TabPanel value={value} index={2}>
                 <div className="choose-time">
                   <div className="session">
@@ -224,7 +250,7 @@ export default function Booking() {
                     <span className="title-time">Buổi sáng</span>
                   </div>
                   <ChooseTime
-                    listHour={hourAfternoon}
+                    listHour={hourMoning}
                     listmMnute={minute}
                   ></ChooseTime>
                   <div className="session border-top">
@@ -237,6 +263,8 @@ export default function Booking() {
                   ></ChooseTime>
                 </div>
               </TabPanel>
+
+              {/**Panel Ngày 4 */}
               <TabPanel value={value} index={3}>
                 <div className="choose-time">
                   <div className="session">
@@ -244,7 +272,7 @@ export default function Booking() {
                     <span className="title-time">Buổi sáng</span>
                   </div>
                   <ChooseTime
-                    listHour={hourAfternoon}
+                    listHour={hourMoning}
                     listmMnute={minute}
                   ></ChooseTime>
                   <div className="session border-top">
@@ -257,6 +285,8 @@ export default function Booking() {
                   ></ChooseTime>
                 </div>
               </TabPanel>
+
+              {/**Panel ngày 5 */}
               <TabPanel value={value} index={4}>
                 <div className="choose-time">
                   <div className="session">
@@ -264,7 +294,7 @@ export default function Booking() {
                     <span className="title-time">Buổi sáng</span>
                   </div>
                   <ChooseTime
-                    listHour={hourAfternoon}
+                    listHour={hourMoning}
                     listmMnute={minute}
                   ></ChooseTime>
                   <div className="session border-top">
@@ -277,6 +307,7 @@ export default function Booking() {
                   ></ChooseTime>
                 </div>
               </TabPanel>
+              {/**Panel ngày 6 */}
               <TabPanel value={value} index={5}>
                 <div className="choose-time">
                   <div className="session">
@@ -284,7 +315,7 @@ export default function Booking() {
                     <span className="title-time">Buổi sáng</span>
                   </div>
                   <ChooseTime
-                    listHour={hourAfternoon}
+                    listHour={hourMoning}
                     listmMnute={minute}
                   ></ChooseTime>
                   <div className="session border-top">
@@ -297,6 +328,7 @@ export default function Booking() {
                   ></ChooseTime>
                 </div>
               </TabPanel>
+              {/**Panel ngày 7 */}
               <TabPanel value={value} index={6}>
                 <div className="choose-time">
                   <div className="session">
@@ -319,9 +351,18 @@ export default function Booking() {
               </TabPanel>
             </Box>
           </div>
-
-          <div className="wrap_btn-booking-fixed container bg-white">
-            <button type="button" class="btn btn-primary">
+          {/** Button đặt khám bệnh. Nếu chưa chọn thời gian khám thì button sẽ bị disable */}
+          <div
+            className={`wrap_btn-booking-fixed container bg-white ${
+              fixed ? "btn-fixed" : "btn-relative"
+            }`}
+          >
+            <button
+              type="button"
+              className={`btn btn-primary ${
+                selectedButton == null ? "disabled" : ""
+              }`}
+            >
               Đặt khám ngay
             </button>
           </div>
