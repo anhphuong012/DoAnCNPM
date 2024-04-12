@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/img-redundant-alt */
+/* eslint-disable no-sparse-arrays */
 import React, { useState, Component } from "react";
 import "../css/home.css";
 import Header from "./Header";
@@ -5,6 +7,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import Footer from "./Footer";
+
+
 export default function Home() {
   const [doctors, setDoctors] = useState([
     {
@@ -83,7 +87,9 @@ export default function Home() {
 
   return (
     <div>
-      <Header></Header>
+      <Header/>
+      <div><a href="/createCalendar">Doctor</a></div>
+
       <section className="bg-primary main-content  relative overflow-hidden">
         <div>
           <h1 className="title text-white">Ứng dụng đặt khám</h1>

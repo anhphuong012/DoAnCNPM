@@ -1,0 +1,25 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+.hearderBar {
+    background-color: #fff;
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.bar {
+    margin-left: 6%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.bar img {
+    width: 130px;
+    height: 50px;
+}
