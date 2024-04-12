@@ -88,8 +88,6 @@ export default function Home() {
   return (
     <div>
       <Header/>
-      <div><a href="/createCalendar">Doctor</a></div>
-
       <section className="bg-primary main-content  relative overflow-hidden">
         <div>
           <h1 className="title text-white">Ứng dụng đặt khám</h1>
@@ -104,7 +102,7 @@ export default function Home() {
         <div div="wrap-search" style={{ minWidth: "70%" }}>
           <div class="input-group mb-3 input-group-lg">
             <input
-              placeholder="Triệu chứng, Bác sĩ,Khoa..."
+              placeholder="Triệu chứng, Bác sĩ, Khoa..."
               type="text"
               class="form-control search"
               value={inputValue}

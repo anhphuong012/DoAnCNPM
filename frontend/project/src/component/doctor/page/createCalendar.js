@@ -92,7 +92,7 @@ export default function InfoDoctor() {
         <div className="mainDiv">
           <div className="titlePage">
             <p className="titleHome">
-              <a href="/">Trang Chủ</a> / Tạo Lịch
+              <a href="/">Trang Chủ </a><p className="p-symbol">/</p><a href="/create-calendar"> Tạo Lịch Khám</a>
             </p>  
           </div>
           <div className="createCalendar">
@@ -111,30 +111,44 @@ export default function InfoDoctor() {
                   <p className="titleInput">Buổi sáng</p>
                   <ul className="timeDiv">
                     <li className="listTime">07:00 - 07:15</li>
-                    <li className="listTime">07:00 - 07:15</li>
-                    <li className="listTime">07:00 - 07:15</li>
-                    <li className="listTime">07:00 - 07:15</li>
-                    <li className="listTime">07:00 - 07:15</li>
-                    <li className="listTime">07:00 - 07:15</li>
-                    <li className="listTime">07:00 - 07:15</li>
-                    <li className="listTime">07:00 - 07:15</li>
+                    <li className="listTime">07:15 - 07:30</li>
+                    <li className="listTime">07:30 - 07:45</li>
+                    <li className="listTime">07:45 - 08:00</li>
+                    <li className="listTime">08:00 - 08:30</li>
+                    <li className="listTime">07:00 - 08:45</li>
+                    <li className="listTime">07:00 - 09:00</li>
+                    <li className="listTime">09:00 - 09:15</li>
+                    <li className="listTime">09:15 - 09:30</li>
+                    <li className="listTime">09:30 - 09:45</li>
+                    <li className="listTime">09:45 - 10:00</li>
+                    <li className="listTime">10:00 - 10:15</li>
+                    <li className="listTime">10:15 - 10:30</li>
+                    <li className="listTime">10:30 - 10:45</li>
+                    <li className="listTime">10:45 - 11:00</li>
                   </ul>
                 </div>
                 
                 <div className="eveningTime">
                   <p className="titleInput">Buổi chiều</p>
                   <ul className="timeDiv">
-                    <li className="listTime">07:00 - 07:15</li>
-                    <li className="listTime">07:00 - 07:15</li>
-                    <li className="listTime">07:00 - 07:15</li>
-                    <li className="listTime">07:00 - 07:15</li>
-                    <li className="listTime">07:00 - 07:15</li>
-                    <li className="listTime">07:00 - 07:15</li>
-                    <li className="listTime">07:00 - 07:15</li>
-                    <li className="listTime">07:00 - 07:15</li>
+                    <li className="listTime">13:00 - 13:15</li>
+                    <li className="listTime">13:15 - 13:30</li>
+                    <li className="listTime">13:30 - 13:45</li>
+                    <li className="listTime">13:45 - 14:00</li>
+                    <li className="listTime">14:00 - 14:15</li>
+                    <li className="listTime">14:15 - 14:30</li>
+                    <li className="listTime">14:30 - 14:45</li>
+                    <li className="listTime">14:45 - 15:00</li>
+                    <li className="listTime">15:00 - 15:15</li>
+                    <li className="listTime">15:15 - 15:30</li>
+                    <li className="listTime">15:30 - 15:45</li>
+                    <li className="listTime">15:45 - 16:00</li>
+                    <li className="listTime">16:00 - 16:15</li>
+                    <li className="listTime">16:15 - 16:30</li>
+                    <li className="listTime">16:30 - 16:45</li>
+                    <li className="listTime">16:45 - 17:00</li>
                   </ul>
                 </div>
-                
                 <div className="submitButton">
                   <input type="submit" value="Tạo Lịch" className="createCalendarButton"/>
                 </div>
