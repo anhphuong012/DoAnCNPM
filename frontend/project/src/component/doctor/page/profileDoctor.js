@@ -7,7 +7,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "../../user/css/profile.css";
 
 export default function Profile() {
-  const [male, setMale] = useState(true);
   const [isEdit, setIsEdit] = useState(false);
 
   return (

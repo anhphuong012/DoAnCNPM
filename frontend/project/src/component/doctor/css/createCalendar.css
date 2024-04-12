@@ -257,9 +257,15 @@ ul li {
     border: 1px solid #398bff;
     padding: 15px 30px 15px 30px;
     font-size: 18px;
+    background-color: #fff;
 }
 
 .listTime:active {
     background-color: #398bff;
     color: #fff;
 }
+
+.listTime.selected {
+    background-color: red;
+    color: white;
+  }
