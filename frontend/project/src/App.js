@@ -1,5 +1,4 @@
 /* eslint-disable react/react-in-jsx-scope */
-import logo from "./component/user/img/logo.svg";
 import "./App.css";
 import Home from "./component/user/page/Home";
 import LoginPage from "./component/user/page/Login";

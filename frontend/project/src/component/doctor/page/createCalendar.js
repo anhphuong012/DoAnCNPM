@@ -1,33 +1,17 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React, { useState } from "react";
 import TabBar from "./tabBar";
-import ChooseDate from "./datePicker";
+import DatePickerComponent from "./datePicker";
 
 // Css
 import "../css/createCalendar.css";
-
-
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
-// import Typography from "@mui/material/Typography";
-// import Breadcrumbs from "@mui/material/Breadcrumbs";
-// import Link from "@mui/material/Link";
-// import Box from "@mui/material/Box";
-// import Tabs from "@mui/material/Tabs";
-// import PropTypes from "prop-types";
-// import Tab from "@mui/material/Tab";
-// import TodayIcon from "@mui/icons-material/Today";
 
-
-function a11yProps(index) {
-  return {
-    id: `vertical-tab-${index}`,
-    "aria-controls": `vertical-tabpanel-${index}`,
-  };
-}
 
 export default function InfoDoctor() {
+
   const [doctors, setDoctors] = useState([
     {
       id: 1,
@@ -71,20 +55,79 @@ export default function InfoDoctor() {
   };
 
   // Chọn lịch
+  const [selectedDate, setSelectedDate] = useState(null);
+  const [selectedMorningSlots, setSelectedMorningSlots] = useState([]);
+  const [selectedAfternoonSlots, setSelectedAfternoonSlots] = useState([]);
+  const [selectedTimeSlots, setSelectedTimeSlots] = useState([]);
+  
 
 
+  const handleDateSelect = (date) => {
+    setSelectedDate(null);
+    setSelectedMorningSlots([]);
+    setSelectedAfternoonSlots([]);
+    setSelectedTimeSlots([]);
+  };
 
-  // const [value, setValue] = useState(0);
+  const handleSlotSelect = (slot) => {
 
-  // const [fixed, setFixed] = useState(true);
+    setSelectedTimeSlots((prevSlots) =>
+      prevSlots.includes(slot) ? prevSlots.filter((s) => s !== slot) : [...prevSlots, slot]
+    );
+  };
 
-  // const minute = ["00", "15", "30", "45"];
-  // const hourMoning = ["7", "8", "9", "10"];
-  // const hourAfternoon = ["13", "14", "15", "16"];
-
-  // const [selectedButton, setSelectedButton] = useState(null);
-
+  const handleCreateSchedule = () => {
+    setSelectedDate();
+    setSelectedMorningSlots([]);
+    setSelectedAfternoonSlots([]);
     
+    // Gửi dữ liệu lịch tới API
+    console.log("Ngày đã chọn:", selectedDate);
+    console.log("Khung giờ sáng đã chọn:", selectedMorningSlots);
+    console.log("Khung giờ chiều đã chọn:", selectedAfternoonSlots);
+    console.log("Các khung giờ đã chọn:", selectedTimeSlots);
+  };
+
+  const [morningTimeSlots, setMorningTimeSlots] = useState([
+    "07:00 - 07:15",
+    "07:15 - 07:30",
+    "07:30 - 07:45",
+    "07:45 - 08:00",
+    "08:00 - 08:15",
+    "08:15 - 08:30",
+    "08:30 - 08:45",
+    "08:45 - 09:00",
+    "09:00 - 09:15",
+    "09:15 - 09:30",
+    "09:30 - 09:45",
+    "09:45 - 10:00",
+    "10:00 - 10:15",
+    "10:15 - 10:30",
+    "10:30 - 10:45",
+    "10:45 - 11:00"
+  ]);
+
+  const afternoonTimeSlots = [
+    "13:00 - 13:15",
+    "13:15 - 13:30",
+    "13:30 - 13:45",
+    "13:45 - 14:00",
+    "14:00 - 14:15",
+    "14:15 - 14:30",
+    "14:30 - 14:45",
+    "14:45 - 15:00",
+    "15:00 - 15:15",
+    "15:15 - 15:30",
+    "15:30 - 15:45",
+    "15:45 - 16:00",
+    "16:00 - 16:15",
+    "16:15 - 16:30",
+    "16:30 - 16:45",
+    "16:45 - 17:00"
+  ];
+
+  
+
   return (
     <div className="content">
       <TabBar/>
@@ -105,56 +148,49 @@ export default function InfoDoctor() {
               <div className="inputCalendar">
                 <div className="chooseDate">
                   <p className="titleInput">Ngày</p>
-                  <ChooseDate/>
+                  <DatePickerComponent onSelect={handleDateSelect}/>
                 </div>
                 <div className="morningTime">
                   <p className="titleInput">Buổi sáng</p>
                   <ul className="timeDiv">
-                    <li className="listTime">07:00 - 07:15</li>
-                    <li className="listTime">07:15 - 07:30</li>
-                    <li className="listTime">07:30 - 07:45</li>
-                    <li className="listTime">07:45 - 08:00</li>
-                    <li className="listTime">08:00 - 08:30</li>
-                    <li className="listTime">07:00 - 08:45</li>
-                    <li className="listTime">07:00 - 09:00</li>
-                    <li className="listTime">09:00 - 09:15</li>
-                    <li className="listTime">09:15 - 09:30</li>
-                    <li className="listTime">09:30 - 09:45</li>
-                    <li className="listTime">09:45 - 10:00</li>
-                    <li className="listTime">10:00 - 10:15</li>
-                    <li className="listTime">10:15 - 10:30</li>
-                    <li className="listTime">10:30 - 10:45</li>
-                    <li className="listTime">10:45 - 11:00</li>
+                    {morningTimeSlots.map((slot, index) => (
+                      <button
+                        key={index}
+                        className={`listTime ${selectedTimeSlots.includes(slot) ? 'selected' : ''}`}
+                        onClick={() => handleSlotSelect(slot)}
+                      >
+                        {slot}
+                      </button>
+                    ))}
                   </ul>
                 </div>
                 
                 <div className="eveningTime">
                   <p className="titleInput">Buổi chiều</p>
                   <ul className="timeDiv">
-                    <li className="listTime">13:00 - 13:15</li>
-                    <li className="listTime">13:15 - 13:30</li>
-                    <li className="listTime">13:30 - 13:45</li>
-                    <li className="listTime">13:45 - 14:00</li>
-                    <li className="listTime">14:00 - 14:15</li>
-                    <li className="listTime">14:15 - 14:30</li>
-                    <li className="listTime">14:30 - 14:45</li>
-                    <li className="listTime">14:45 - 15:00</li>
-                    <li className="listTime">15:00 - 15:15</li>
-                    <li className="listTime">15:15 - 15:30</li>
-                    <li className="listTime">15:30 - 15:45</li>
-                    <li className="listTime">15:45 - 16:00</li>
-                    <li className="listTime">16:00 - 16:15</li>
-                    <li className="listTime">16:15 - 16:30</li>
-                    <li className="listTime">16:30 - 16:45</li>
-                    <li className="listTime">16:45 - 17:00</li>
+                    {afternoonTimeSlots.map((slot, index) => (
+                      <button
+                        key={index}
+                        className={`listTime ${selectedTimeSlots.includes(slot) ? 'selected' : ''}`}
+                        onClick={() => handleSlotSelect(slot)}
+                      >
+                        {slot}
+                      </button>
+                    ))}
                   </ul>
                 </div>
                 <div className="submitButton">
-                  <input type="submit" value="Tạo Lịch" className="createCalendarButton"/>
+                  <input
+                  type="submit"
+                  value="Tạo Lịch"
+                  className="createCalendarButton"
+                  onClick={handleCreateSchedule}
+                  />
                 </div>
 
+
               </div>
-              
+
               <div className="bannerDiv">
                 {banners.map((item) => (
                   <Banner props={item}></Banner>
