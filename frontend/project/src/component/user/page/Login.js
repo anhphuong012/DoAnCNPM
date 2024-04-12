@@ -3,6 +3,8 @@ import Header from "./Header";
 import Login from "../img/Login.png";
 import "../css/login.css";
 import Footer from "./Footer";
+
+import Login_pan from "../img/login_pan.png";
 export default function LoginPage() {
   return (
     <div>
@@ -11,7 +13,7 @@ export default function LoginPage() {
         <section className="container">
           <div className="d-flex row">
             <div className="block-left col-6">
-              <img src={Login}></img>
+              <img src={Login_pan}></img>
             </div>
             <div className="block-right col-6">
               <div className="bg-white w-80">
