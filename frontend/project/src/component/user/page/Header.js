@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 import React, { useState, Component } from "react";
 import "../css/header.css";
 import logo from "../img/logo.svg";
@@ -36,6 +37,7 @@ export default function Headers() {
     <div className="border-b">
       <header class="container d-flex justify-content-between mt-20 ">
         <div class="logo">
+
           <a href="/">
             <img class="img-logo" src={logoPan} />
           </a>

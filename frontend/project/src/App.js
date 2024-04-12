@@ -1,5 +1,5 @@
 /* eslint-disable react/react-in-jsx-scope */
-import logo from "./logo.svg";
+import logo from "./component/user/img/logo.svg";
 import "./App.css";
 import Home from "./component/user/page/Home";
 import LoginPage from "./component/user/page/Login";
@@ -9,6 +9,7 @@ import Booking from "./component/user/page/Booking";
 import Schedule from "./component/user/page/Schedule";
 import ScheduleCancel from "./component/user/page/ScheduleCancel";
 import Profile from "./component/user/page/Profile";
+import ProfileDoctor from "./component/doctor/page/profileDoctor";
 import CreateCalendar from "./component/doctor/page/createCalendar";
 
 
@@ -27,7 +28,8 @@ function App() {
         <Route path="/schedule" element={<Schedule />} />
         <Route path="/schedulecancel" element={<ScheduleCancel />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/createCalendar" element={<CreateCalendar/>} />
+        <Route path="/profile-doctors" element={<ProfileDoctor/>} />
+        <Route path="/create-calendar" element={<CreateCalendar/>} />
       </Routes>
     </div>
   );
