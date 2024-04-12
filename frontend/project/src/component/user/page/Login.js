@@ -3,6 +3,7 @@ import Header from "./Header";
 import Login from "../img/Login.png";
 import "../css/login.css";
 import Footer from "./Footer";
+import { Link } from "react-router-dom";
 
 import Login_pan from "../img/login_pan.png";
 export default function LoginPage() {
@@ -67,9 +68,9 @@ export default function LoginPage() {
 
                 <div className="mt-4">
                   Chưa có tài khoản ?{" "}
-                  <a className="forget-pass" href="/register">
+                  <Link className="forget-pass" to="/register">
                     Đăng kí ngay
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>

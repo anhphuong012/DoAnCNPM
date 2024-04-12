@@ -75,7 +75,7 @@ export default function Home() {
             <h4 class="card-title author-card">{props.props.name}</h4>
             <p class="text-sm text-des-card mr-b-2">{props.props.department}</p>
             <p class="text-sm  text-des-card">{props.props.hospital}</p>
-            <a href="#" class="btn btn-primary">
+            <a href={`/booking/${props.props.id}`} class="btn btn-primary">
               Đặt lịch
             </a>
           </div>
@@ -86,7 +86,6 @@ export default function Home() {
 
   return (
     <div>
-
       <Header />
 
       <section className="bg-primary main-content  relative overflow-hidden">
@@ -103,7 +102,7 @@ export default function Home() {
         <div div="wrap-search" style={{ minWidth: "70%" }}>
           <div class="input-group mb-3 input-group-lg">
             <input
-              placeholder="Triệu chứng, Bác sĩ, Khoa..."
+              placeholder="Nhập triệu chứng, .."
               type="text"
               class="form-control search"
               value={inputValue}
