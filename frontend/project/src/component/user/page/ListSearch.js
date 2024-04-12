@@ -7,11 +7,19 @@ import ListItemText from "@mui/material/ListItemText";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
+import { useParams } from "react-router-dom";
 
 import "../css/search.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function ListSearch() {
+  //Lấy giá trị search truyền qua
+  const params = useParams();
+  const keyword = params.keyword;
+
+  console.log(keyword);
+
+  //Component thông tin về bác sĩ
   const Doctor = (props) => {
     return (
       <div>
@@ -55,7 +63,10 @@ export default function ListSearch() {
       <Header></Header>
       <section className="bg-white mt-4 boder-b">
         <div className="header-container mr-l-r-auto">
-          <div className="wrap-search mr-l-r-auto just-center">
+          <div
+            className="wrap-search mr-l-r-auto just-center"
+            style={{ paddingTop: "20px" }}
+          >
             <div class="input-group mb-3 input-group-lg w-50 ">
               <input
                 placeholder="Triệu chứng, Bác sĩ,Khoa..."

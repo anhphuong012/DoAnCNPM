@@ -1,6 +1,6 @@
+/* eslint-disable jsx-a11y/alt-text */
 import React, { useState, Component } from "react";
 import "../css/header.css";
-import logo from "../img/logo.svg";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Box from "@mui/material/Box";
 import Avatar from "@mui/material/Avatar";
@@ -13,22 +13,33 @@ import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import EventNoteIcon from "@mui/icons-material/EventNote";
 import LogoutIcon from "@mui/icons-material/Logout";
 
+import logoPan from "../img/Logo_PanBee_png.png";
+
 import Tooltip from "@mui/material/Tooltip";
 export default function Headers() {
   const [isLogin, setIsLogin] = useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
+
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const handleForward = (url) => {
+    setAnchorEl(null);
+    window.location.href = url;
+  };
   return (
     <div className="border-b">
       <header class="container d-flex justify-content-between mt-20 ">
         <div class="logo">
-          <img class="img-logo" src={logo} />
+
+          <a href="/">
+            <img class="img-logo" src={logoPan} />
+          </a>
         </div>
 
         <div className="nav">
@@ -106,17 +117,17 @@ export default function Headers() {
                 transformOrigin={{ horizontal: "right", vertical: "top" }}
                 anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
               >
-                <MenuItem onClick={handleClose}>
+                <MenuItem onClick={() => handleForward("/profile")}>
                   <ListItemIcon>
                     <AccountBoxIcon></AccountBoxIcon>
                   </ListItemIcon>{" "}
                   Thông tin
                 </MenuItem>
-                <MenuItem onClick={handleClose}>
+                <MenuItem onClick={() => handleForward("/schedule")}>
                   <ListItemIcon>
                     <EventNoteIcon></EventNoteIcon>
                   </ListItemIcon>{" "}
-                  Lịch đặt khám
+                  Lịch đã đặt
                 </MenuItem>
                 <Divider />
                 <MenuItem onClick={handleClose}>

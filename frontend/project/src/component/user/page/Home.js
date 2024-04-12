@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/img-redundant-alt */
+/* eslint-disable no-sparse-arrays */
 import React, { useState, Component } from "react";
 import "../css/home.css";
 import Header from "./Header";
@@ -5,6 +7,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import Footer from "./Footer";
+
 export default function Home() {
   const [doctors, setDoctors] = useState([
     {
@@ -50,6 +53,15 @@ export default function Home() {
     },
   ]);
 
+  const [inputValue, setInputValue] = useState("");
+
+  //Xử lí lấy giá trị trong ô input tìm kiếm
+  const handleChangeInputvalue = (event) => {
+    const searchWord = event.target.value;
+    setInputValue(searchWord);
+  };
+
+  //Component thông tin bác sĩ ở trang Home
   const Card = (props) => {
     return (
       <div>
@@ -74,7 +86,9 @@ export default function Home() {
 
   return (
     <div>
-      <Header></Header>
+
+      <Header />
+
       <section className="bg-primary main-content  relative overflow-hidden">
         <div>
           <h1 className="title text-white">Ứng dụng đặt khám</h1>
@@ -89,13 +103,24 @@ export default function Home() {
         <div div="wrap-search" style={{ minWidth: "70%" }}>
           <div class="input-group mb-3 input-group-lg">
             <input
-              placeholder="Triệu chứng, Bác sĩ,Khoa..."
+              placeholder="Triệu chứng, Bác sĩ, Khoa..."
               type="text"
               class="form-control search"
+              value={inputValue}
+              onChange={handleChangeInputvalue}
+              /**Xử lí sự kiện nếu bấm enter */
+              onKeyPress={(event) => {
+                if (event.key === "Enter") {
+                  window.location.href = `/search/${inputValue}`;
+                }
+              }}
             />
-            <button className="btn-search">
+            <a
+              className="btn-search color-black "
+              href={`/search/${inputValue}`}
+            >
               <i class="bi bi-search"></i>
-            </button>
+            </a>
           </div>
         </div>
       </section>
