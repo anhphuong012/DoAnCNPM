@@ -4,13 +4,16 @@ import Header from "./Header";
 import "../css/register.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import Footer from "./Footer";
+import { Link } from "react-router-dom";
 
 export default function Register() {
   const [sex, setSex] = useState("male");
   const [checkPass, setCheckPass] = useState(true);
+  const [checkPhone, setCheckPhone] = useState(true);
 
   const [repass, setRepass] = useState("");
   const [password, setPassword] = useState("");
+  const [phone, setPhone] = useState("");
 
   console.log("Pass:" + password);
   console.log("Repass:" + repass);
@@ -22,6 +25,10 @@ export default function Register() {
   useEffect(() => {
     setCheckPass(password == repass);
   }, [repass, password]);
+
+  useEffect(() => {
+    setCheckPhone(phone.length == 10 && phone.startsWith("0"));
+  }, [phone]);
 
   const radioChange = (event) => {
     setSex(event.target.value);
@@ -70,8 +77,16 @@ export default function Register() {
                           name="phone"
                           id="phone"
                           placeholder="Ví dụ : 0399..."
+                          value={phone}
+                          onChange={(event) => setPhone(event.target.value)}
                           required
                         />
+
+                        {!checkPhone && (
+                          <p className="text-danger">
+                            Số điện thoại phải đúng định dạng và 10 chữ số
+                          </p>
+                        )}
                       </div>
                       <div class="col-12">
                         <label for="email" class="form-label">
@@ -83,6 +98,19 @@ export default function Register() {
                           name="email"
                           id="email"
                           placeholder="name@example.com"
+                          required
+                        />
+                      </div>
+
+                      <div class="col-12">
+                        <label for="age" class="form-label">
+                          Tuổi: <span class="text-danger">*</span>
+                        </label>
+                        <input
+                          type="number"
+                          class="form-control"
+                          name="age"
+                          id="age"
                           required
                         />
                       </div>
@@ -207,12 +235,12 @@ export default function Register() {
                       <div class="col-12">
                         <p class="m-0 text-secondary text-center">
                           Đã có tài khoản ?{" "}
-                          <a
-                            href="/login"
+                          <Link
+                            to="/login"
                             class="link-primary text-decoration-none"
                           >
                             Đăng nhập
-                          </a>
+                          </Link>
                         </p>
                       </div>
                     </div>
