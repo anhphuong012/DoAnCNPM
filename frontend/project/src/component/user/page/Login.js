@@ -2,7 +2,7 @@ import React, { useState, Component } from "react";
 import Header from "./Header";
 import Login from "../img/Login.png";
 import "../css/login.css";
-
+import Footer from "./Footer";
 export default function LoginPage() {
   return (
     <div>
@@ -74,6 +74,7 @@ export default function LoginPage() {
           </div>
         </section>
       </div>
+      <Footer></Footer>
     </div>
   );
 }
