@@ -86,13 +86,9 @@ export default function Home() {
 
   return (
     <div>
-<<<<<<< HEAD
-      <Header/>
-=======
-      <Header />
-      {/* <div><a href="/createCalendar">Doctor</a></div> */}
 
->>>>>>> 2549acc0898d2876707549f7cd9a7f4217889715
+      <Header />
+
       <section className="bg-primary main-content  relative overflow-hidden">
         <div>
           <h1 className="title text-white">Ứng dụng đặt khám</h1>

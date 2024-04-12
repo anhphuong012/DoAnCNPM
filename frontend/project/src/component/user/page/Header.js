@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 import React, { useState, Component } from "react";
 import "../css/header.css";
 import logo from "../img/logo.svg";
