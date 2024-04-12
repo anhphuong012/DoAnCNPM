@@ -1,11 +1,27 @@
-import React, { useState, Component } from "react";
+import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Header from "./Header";
 import "../css/register.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
+import Footer from "./Footer";
 
 export default function Register() {
   const [sex, setSex] = useState("male");
+  const [checkPass, setCheckPass] = useState(true);
+
+  const [repass, setRepass] = useState("");
+  const [password, setPassword] = useState("");
+
+  console.log("Pass:" + password);
+  console.log("Repass:" + repass);
+
+  const handleRepass = (event) => {
+    setRepass(event.target.value);
+  };
+
+  useEffect(() => {
+    setCheckPass(password == repass);
+  }, [repass, password]);
 
   const radioChange = (event) => {
     setSex(event.target.value);
@@ -130,7 +146,10 @@ export default function Register() {
                           class="form-control"
                           name="password"
                           id="password"
-                          value=""
+                          value={password}
+                          onChange={(event) => {
+                            setPassword(event.target.value);
+                          }}
                           required
                         />
                       </div>
@@ -144,11 +163,18 @@ export default function Register() {
                           class="form-control"
                           name="re-password"
                           id="re-password"
-                          value=""
+                          value={repass}
+                          onChange={handleRepass}
                           required
                         />
+
+                        {!checkPass && (
+                          <p className="text-danger">
+                            Mật khẩu không trùng khớp
+                          </p>
+                        )}
                       </div>
-                      <div class="col-12">
+                      {/* <div class="col-12">
                         <div class="form-check">
                           <input
                             class="form-check-input"
@@ -165,7 +191,7 @@ export default function Register() {
                             Đồng ý với các điều khoản ?
                           </label>
                         </div>
-                      </div>
+                      </div> */}
                       <div class="col-12">
                         <div class="d-grid">
                           <button class="btn btn-lg btn-primary" type="submit">
@@ -243,6 +269,7 @@ export default function Register() {
           </div>
         </div>
       </section>
+      <Footer></Footer>
     </div>
   );
 }
