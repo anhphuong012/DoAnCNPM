@@ -12,4 +12,8 @@
 .sex-check {
     display: flex;
         justify-content: space-evenly;
-    }
+}
+.text-danger {
+    color: red;
+    margin-top: 5px;
+}

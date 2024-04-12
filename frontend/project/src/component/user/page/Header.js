@@ -13,6 +13,8 @@ import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import EventNoteIcon from "@mui/icons-material/EventNote";
 import LogoutIcon from "@mui/icons-material/Logout";
 
+import logoPan from "../img/Logo_PanBee_png.png";
+
 import Tooltip from "@mui/material/Tooltip";
 export default function Headers() {
   const [isLogin, setIsLogin] = useState(false);
@@ -34,7 +36,10 @@ export default function Headers() {
     <div className="border-b">
       <header class="container d-flex justify-content-between mt-20 ">
         <div class="logo">
-          <a href="/"><img class="img-logo" src={logo}/></a>
+
+          <a href="/">
+            <img class="img-logo" src={logoPan} />
+          </a>
         </div>
 
         <div className="nav">

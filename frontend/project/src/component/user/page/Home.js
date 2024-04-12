@@ -8,7 +8,6 @@ import "bootstrap/dist/js/bootstrap.bundle.min";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import Footer from "./Footer";
 
-
 export default function Home() {
   const [doctors, setDoctors] = useState([
     {
@@ -87,7 +86,13 @@ export default function Home() {
 
   return (
     <div>
+<<<<<<< HEAD
       <Header/>
+=======
+      <Header />
+      {/* <div><a href="/createCalendar">Doctor</a></div> */}
+
+>>>>>>> 2549acc0898d2876707549f7cd9a7f4217889715
       <section className="bg-primary main-content  relative overflow-hidden">
         <div>
           <h1 className="title text-white">Ứng dụng đặt khám</h1>
