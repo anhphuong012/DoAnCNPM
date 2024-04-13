@@ -26,8 +26,8 @@ public class Database {
                 Shedule shedule1 = new Shedule(79822, LocalDate.parse("2024-04-10"), LocalTime.parse("09:00:00"),LocalTime.parse("11:00:00"), true);
                 Shedule shedule2 = new Shedule(79822, LocalDate.parse("2024-04-10"), LocalTime.parse("14:00:00"), LocalTime.parse("17:00:00"), true);
 
-                UserAccount user = new UserAccount("1234567890", "hjkhjks",1);
-                UserAccount userDoctor = new UserAccount("8888888888", "hhhh ",0);
+                UserAccount user = new UserAccount("1234567890", "12345",1);
+                UserAccount userDoctor = new UserAccount("8888888888", "12345 ",0);
 
                 System.out.println("Data :"+ sheduleRepository.save(shedule1));
                 System.out.printf("Data :"+ sheduleRepository.save(shedule2));
