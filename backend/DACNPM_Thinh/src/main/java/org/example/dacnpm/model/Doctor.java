@@ -9,7 +9,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-
+import java.util.List;
+import jakarta.persistence.OneToMany;
 @Entity
 @Table(name = "doctor")
 public class Doctor {
@@ -34,6 +35,8 @@ public class Doctor {
 	@Column(name ="place_ofwork")
 	private String placeOfwork;
 	
+	@OneToMany(mappedBy = "doctor")
+	private List<Booking> bookings;
 	
 	public Doctor() {
 		
