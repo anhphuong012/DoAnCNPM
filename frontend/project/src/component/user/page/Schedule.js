@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 
@@ -9,6 +9,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 import "../css/schedule.css";
@@ -37,6 +38,29 @@ function createData(name, calories, fat, carbs, protein) {
 }
 
 export default function Schedule() {
+  // const params = useParams();
+  // const keyword = params.id;
+
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    fetchData(0);
+  }, []);
+
+  const fetchData = (id) => {
+    const fetchPromise = fetch(`/v1/booking/patient/${id}`);
+
+    fetchPromise
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.data != null) {
+          setData(data.data.bookins);
+        }
+      });
+  };
+
+  console.log(data);
+
   return (
     <div>
       <Header></Header>
@@ -69,23 +93,29 @@ export default function Schedule() {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {rows.map((row) => (
-                  <TableRow
-                    key={row.name}
-                    sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                  >
-                    <TableCell component="th" scope="row">
-                      11/7/2023 11:30
-                    </TableCell>
-                    <TableCell align="left">Bác sĩ Trần Văn A</TableCell>
-                    <TableCell align="left">
-                      <span class="badge bg-info">Đợi khám </span>
-                    </TableCell>
-                    <TableCell align="left">
-                      <button className="btn btn-danger">Hủy Lịch</button>
-                    </TableCell>
-                  </TableRow>
-                ))}
+                {data != [] &&
+                  data.length > 0 &&
+                  data.map((item, index) => (
+                    <TableRow
+                      key={index}
+                      sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                    >
+                      <TableCell component="th" scope="row">
+                        {item.date}
+                      </TableCell>
+                      {item.doctor != undefined && item.doctor != null && (
+                        <TableCell align="left">
+                          {item.doctor.fullName}
+                        </TableCell>
+                      )}
+                      <TableCell align="left">
+                        <span class="badge bg-info">Đợi khám </span>
+                      </TableCell>
+                      <TableCell align="left">
+                        <button className="btn btn-danger">Hủy Lịch</button>
+                      </TableCell>
+                    </TableRow>
+                  ))}
               </TableBody>
             </Table>
           </TableContainer>

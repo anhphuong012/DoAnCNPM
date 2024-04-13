@@ -1,5 +1,8 @@
 package org.example.dacnpm.dto;
 
+import java.util.List;
+
+import org.example.dacnpm.model.Booking;
 import org.example.dacnpm.model.Doctor;
 
 public class DoctorDTO {
@@ -12,6 +15,8 @@ public class DoctorDTO {
 	private String descreption;
 	private String department;
 	private String placeOfwork;
+	
+	private List<BookingReturnDTO> bookings;
 	
 	public DoctorDTO() {
 		
@@ -93,5 +98,15 @@ public class DoctorDTO {
 	public static DoctorDTO convert(Doctor doctor) {
 		return new DoctorDTO(doctor.getId(), doctor.getFullName(), doctor.getAvatar(), doctor.getEmail(), doctor.getDegree(), doctor.getDescreption(), doctor.getDepartment().getName(), doctor.getPlaceOfwork());
 	}
+
+	public List<BookingReturnDTO> getBookings() {
+		return bookings;
+	}
+
+	public void setBookings(List<BookingReturnDTO> bookings) {
+		this.bookings = bookings;
+	}
+	
+	
 
 }
