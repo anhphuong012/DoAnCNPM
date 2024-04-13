@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -8,10 +9,10 @@ export default function DatePickerComponent({ onSelect }) {
 
     const handleDateSelect = (date) => {
         const currentDate = new Date();
-        currentDate.setHours(0, 0, 0, 0); // Đặt giờ của ngày hiện tại về 00:00:00
+        currentDate.setHours(0, 0, 0, 0);
         
         const selectedDate = new Date(date);
-        selectedDate.setHours(0, 0, 0, 0); // Đặt giờ của ngày được chọn về 00:00:00
+        selectedDate.setHours(0, 0, 0, 0);
         
         if (selectedDate > currentDate) {
           setStartDate(date);

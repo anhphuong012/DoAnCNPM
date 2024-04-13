@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Header from "../../user/page/Header";
 import Footer from "../../user/page/Footer";
+import TabBar from "./tabBar";
 
 
 import "bootstrap/dist/css/bootstrap.min.css";

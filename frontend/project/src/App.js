@@ -10,6 +10,7 @@ import ScheduleCancel from "./component/user/page/ScheduleCancel";
 import Profile from "./component/user/page/Profile";
 import ProfileDoctor from "./component/doctor/page/profileDoctor";
 import CreateCalendar from "./component/doctor/page/createCalendar";
+import WatchCalendar from "./component/doctor/page/watchCalendar";
 
 import { Routes, Route } from "react-router-dom";
 
@@ -26,8 +27,11 @@ function App() {
         <Route path="/schedule" element={<Schedule />} />
         <Route path="/schedulecancel" element={<ScheduleCancel />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/profile-doctors" element={<ProfileDoctor />} />
-        <Route path="/create-calendar" element={<CreateCalendar />} />
+
+        <Route path="/profile-doctor" element={<ProfileDoctor/>} />
+        <Route path="/create-calendar" element={<CreateCalendar/>} />
+        <Route path="/watch-calendar" element={<WatchCalendar/>} />
+
       </Routes>
     </div>
   );
