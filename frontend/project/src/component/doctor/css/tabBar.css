@@ -9,7 +9,7 @@
     width: 100%;
     height: auto;
     display: flex;
-    justify-content: start;
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -17,6 +17,11 @@
     margin-left: 6%;
     margin-top: 15px;
     margin-bottom: 15px;
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: start;
+    align-items: center;
 }
 
 .bar img {
@@ -34,7 +39,7 @@
 .menuBar img {
     width: 40px;
     height: 40px;
-    margin-right: 2%;
+    margin-right: 3%;
 }
 
 .img-menu2, .menuList {

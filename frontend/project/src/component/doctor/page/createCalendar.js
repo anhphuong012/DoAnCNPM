@@ -55,40 +55,7 @@ export default function InfoDoctor() {
   };
 
   // Chọn lịch
-  const [selectedDate, setSelectedDate] = useState(null);
-  const [selectedMorningSlots, setSelectedMorningSlots] = useState([]);
-  const [selectedAfternoonSlots, setSelectedAfternoonSlots] = useState([]);
-  const [selectedTimeSlots, setSelectedTimeSlots] = useState([]);
-  
-
-
-  const handleDateSelect = (date) => {
-    setSelectedDate(null);
-    setSelectedMorningSlots([]);
-    setSelectedAfternoonSlots([]);
-    setSelectedTimeSlots([]);
-  };
-
-  const handleSlotSelect = (slot) => {
-
-    setSelectedTimeSlots((prevSlots) =>
-      prevSlots.includes(slot) ? prevSlots.filter((s) => s !== slot) : [...prevSlots, slot]
-    );
-  };
-
-  const handleCreateSchedule = () => {
-    setSelectedDate();
-    setSelectedMorningSlots([]);
-    setSelectedAfternoonSlots([]);
-    
-    // Gửi dữ liệu lịch tới API
-    console.log("Ngày đã chọn:", selectedDate);
-    console.log("Khung giờ sáng đã chọn:", selectedMorningSlots);
-    console.log("Khung giờ chiều đã chọn:", selectedAfternoonSlots);
-    console.log("Các khung giờ đã chọn:", selectedTimeSlots);
-  };
-
-  const [morningTimeSlots, setMorningTimeSlots] = useState([
+  const [morningTimeSlots] = useState([
     "07:00 - 07:15",
     "07:15 - 07:30",
     "07:30 - 07:45",
@@ -126,6 +93,49 @@ export default function InfoDoctor() {
     "16:45 - 17:00"
   ];
 
+  const [selectedDate, setSelectedDate] = useState(null);
+  const [selectedMorningSlots, setSelectedMorningSlots] = useState([]);
+  const [setSelectedAfternoonSlots] = useState([]);
+  const [selectedTimeSlots, setSelectedTimeSlots] = useState([]);
+
+  const handleDateSelect = (date) => {
+    setSelectedDate();
+    setSelectedMorningSlots([]);
+    setSelectedAfternoonSlots([]);
+    setSelectedTimeSlots([]);
+  };
+
+  const handleSlotSelect = (slot) => {
+    setSelectedTimeSlots((prevSlots) =>
+      prevSlots.includes(slot) ? prevSlots.filter((s) => s !== slot) : [...prevSlots, slot]
+    );
+  };
+
+  const handleCreateSchedule = () => {
+
+    // Kiểm tra xem ngày đã được chọn chưa
+    if (selectedDate === null) {
+      alert("Vui lòng chọn ngày khám");
+      return;
+    } else if (selectedTimeSlots.length === 0) {
+      alert("Vui lòng chọn khung giờ khám");
+      return;
+    }
+  
+    // Log ngày và khung giờ đã chọn
+    console.log("Ngày đã chọn:", selectedDate);
+    console.log("Các khung giờ đã chọn:", selectedTimeSlots);
+  
+    // Đặt lại trạng thái của các khung giờ đã chọn về trạng thái ban đầu
+    setSelectedMorningSlots([]);
+    setSelectedAfternoonSlots([]);
+    setSelectedTimeSlots([]);
+  
+    // Đặt lại ngày đã chọn về null
+    setSelectedDate(null);
+  };
+
+  
   
 
   return (
@@ -164,7 +174,7 @@ export default function InfoDoctor() {
                     ))}
                   </ul>
                 </div>
-                
+
                 <div className="eveningTime">
                   <p className="titleInput">Buổi chiều</p>
                   <ul className="timeDiv">
