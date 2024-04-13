@@ -11,8 +11,6 @@ import Profile from "./component/user/page/Profile";
 import ProfileDoctor from "./component/doctor/page/profileDoctor";
 import CreateCalendar from "./component/doctor/page/createCalendar";
 
-
-
 import { Routes, Route } from "react-router-dom";
 
 function App() {
@@ -23,12 +21,13 @@ function App() {
         <Route path="/login" element={<LoginPage />}></Route>
         <Route path="/register" element={<Register />} />
         <Route path="/search/:keyword" element={<ListSearch />} />
-        <Route path="/booking" element={<Booking />} />
+        <Route path="/search/" element={<ListSearch />} />
+        <Route path="/booking/:id" element={<Booking />} />
         <Route path="/schedule" element={<Schedule />} />
         <Route path="/schedulecancel" element={<ScheduleCancel />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/profile-doctors" element={<ProfileDoctor/>} />
-        <Route path="/create-calendar" element={<CreateCalendar/>} />
+        <Route path="/profile-doctors" element={<ProfileDoctor />} />
+        <Route path="/create-calendar" element={<CreateCalendar />} />
       </Routes>
     </div>
   );
